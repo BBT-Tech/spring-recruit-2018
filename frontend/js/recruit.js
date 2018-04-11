@@ -95,9 +95,11 @@
     college: function () {
       if (data.college() === '') {
         error.college.classList.add('show');
+        dom.college.classList.remove('valid');
         return false;
       } else {
         error.college.classList.remove('show');
+        dom.college.classList.add('valid');
         return true;
       }
     },
@@ -122,9 +124,11 @@
     department_1: function () {
       if (data.department_1() === '') {
         error.department_1.classList.add('show');
+        dom.department_1.classList.remove('valid');
         return false;
       } else {
         error.department_1.classList.remove('show');
+        dom.department_1.classList.add('valid');
         return true;
       }
     },
@@ -141,10 +145,18 @@
 
   // bind error checking
   for (var key in error) {
-    if (error.hasOwnProperty(key) && key !== 'sex' && key !== 'grade' && key !== 'adjust') {
+    if (error.hasOwnProperty(key) && key !== 'sex' && key !== 'grade' && key !== 'adjust' && key !== 'department_1' && key !== 'college') {
       dom[key].addEventListener('blur', checker[key]);
     }
   }
+
+  dom.college.addEventListener('change', checker.college);
+
+  dom.department_1.addEventListener('change', checker.department_1);
+
+  dom.department_2.addEventListener('change', function () {
+    dom.department_2.classList.add('valid');
+  })
 
   var radioTracker = function (dom, listener) {
     for (var i = 0; i < dom.length; i++) {

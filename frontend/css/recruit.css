@@ -40,6 +40,10 @@ body {
   line-height: 26px;
 }
 
+::-webkit-input-placeholder {
+  color: #696969;
+}
+
 .main > * > input {
   background-color: transparent;
   font-size: 14px;
@@ -53,16 +57,19 @@ body {
   position: relative;
 }
 
+
+
 input[type=radio] {
   vertical-align: bottom;
   display: inline-block;
   height: 16px;
   width: 16px;
-  /* appearance: none;
-  -webkit-appearance: none;
-  background-color: white;
-  border: 1px solid #39b54a; */
   opacity: 0;
+}
+
+input[type=radio] ~ span {
+  color: #696969;
+  transition: color 0.5s ease;
 }
 
 input[type=radio] ~ span::before {
@@ -75,6 +82,10 @@ input[type=radio] ~ span::before {
   border: 1px solid #39b54a;
   left: 8px;
   top: 4px;
+}
+
+input[type=radio]:checked ~ span {
+  color: black;
 }
 
 input[type=radio]:checked ~ span::after {
@@ -109,6 +120,7 @@ label > * {
   appearance: none;
   font-size: 14px;
   padding: 0;
+  transition: color 0.5s ease;
 }
 
 .select-wrapper > select::-webkit-input-placeholder {
@@ -190,4 +202,8 @@ label > * {
 
 .error.show {
   opacity: 1;
+}
+
+.valid {
+  color: black !important;
 }

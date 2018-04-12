@@ -3,11 +3,16 @@
   var dialogs = document.getElementsByClassName('dialog-image');
   var initAnimation = function () {
     clearTimeout(timeout);
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
       (function (internal) {
         setTimeout(function () {
-          dialogs[internal].classList.add('in');
-        }, internal * 500)
+          if (internal !== 4) {
+            dialogs[internal].classList.add('in');
+          }
+          else {
+            expandBottom();
+          }
+        }, internal * 1000 + Math.floor(Math.random() * 800))
       })(i)
     }
   }
@@ -48,7 +53,8 @@
   }
 
   var goToStage2 = function () {
-    for (var i = 4; i < 7; i++) {
+    dialogs[4].classList.add('in');
+    for (var i = 5; i < 7; i++) {
       (function (internal) {
         setTimeout(function () {
           dialogs[internal].classList.add('in');
@@ -60,7 +66,7 @@
             dialogWrapper.classList.remove('go-second-top');
             stage = 2;
           }
-        }, (internal - 4) * 500)
+        }, (internal - 4) * 1000 + Math.floor(Math.random() * 800))
       })(i)
 
     }

@@ -3,18 +3,21 @@
   var dialogs = document.getElementsByClassName('dialog-image');
   var initAnimation = function () {
     clearTimeout(timeout);
-    for (var i = 0; i < 5; i++) {
-      (function (internal) {
-        setTimeout(function () {
-          if (internal !== 4) {
-            dialogs[internal].classList.add('in');
-          }
-          else {
-            expandBottom();
-          }
-        }, internal * 1000 + Math.floor(Math.random() * 800))
-      })(i)
-    }
+    setTimeout(function () {
+      dialogs[0].classList.add('in');
+      setTimeout(function() {
+        dialogs[1].classList.add('in');
+        setTimeout(function() {
+          dialogs[2].classList.add('in');
+          setTimeout(function() {
+            dialogs[3].classList.add('in');
+            setTimeout(function() {
+              expandBottom();
+            }, 500)
+          }, 900)
+        }, 1100)
+      }, 1200)
+    }, 800);
   }
   window.addEventListener('load', initAnimation)
   timeout = setTimeout(initAnimation, 5000);
@@ -66,7 +69,7 @@
             dialogWrapper.classList.remove('go-second-top');
             stage = 2;
           }
-        }, (internal - 4) * 1000 + Math.floor(Math.random() * 800))
+        }, (internal - 4) * 1200)
       })(i)
 
     }

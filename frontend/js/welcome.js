@@ -35,7 +35,10 @@
 
   var expandBottom = function () {
     if (stage === 2) {
-      dialogWrapper.style.top = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255 + 'px';
+      var offset = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255;
+      if (offset < 0) {
+        dialogWrapper.style.top = offset + 'px';
+      }
     }
     bottom.classList.add('expanded');
   }
@@ -62,10 +65,16 @@
         setTimeout(function () {
           dialogs[internal].classList.add('in');
           if (internal === 5) {
-            dialogWrapper.style.top = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255 + 50 + 'px';
+            var offset = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255 + 50;
+            if (offset < 0){
+              dialogWrapper.style.top = offset + 'px';
+            }
           }
           if (internal === 6) {
-            dialogWrapper.style.top = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255 + 'px';
+            var offset = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255;
+            if (offset < 0) {
+              dialogWrapper.style.top = offset + 'px';
+            }
             stage = 2;
           }
         }, (internal - 4) * 800)

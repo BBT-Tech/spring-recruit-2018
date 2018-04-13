@@ -9,7 +9,7 @@ body {
   height: 100%;
   background-image: url(../img/background_4.png);
   background-size: cover;
-  background-position: top;
+  background-position: bottom;
   overflow: hidden;
 }
 

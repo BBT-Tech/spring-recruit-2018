@@ -35,14 +35,14 @@
 
   var expandBottom = function () {
     if (stage === 2) {
-      dialogWrapper.classList.add('go-top');
+      dialogWrapper.style.top = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255 + 'px';
     }
     bottom.classList.add('expanded');
   }
 
   var hideBottom = function () {
     if (stage === 2) {
-      dialogWrapper.classList.remove('go-top');
+      dialogWrapper.style.top = 0 + 'px';
     }
     bottom.classList.remove('expanded');
   }
@@ -62,11 +62,10 @@
         setTimeout(function () {
           dialogs[internal].classList.add('in');
           if (internal === 5) {
-            dialogWrapper.classList.add('go-second-top');
+            dialogWrapper.style.top = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255 + 50 + 'px';
           }
           if (internal === 6) {
-            dialogWrapper.classList.add('go-top');
-            dialogWrapper.classList.remove('go-second-top');
+            dialogWrapper.style.top = document.body.clientHeight - dialogWrapper.clientHeight - document.body.clientWidth / 375 * 255 + 'px';
             stage = 2;
           }
         }, (internal - 4) * 800)

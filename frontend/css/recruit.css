@@ -8,20 +8,16 @@ body {
   height: 100%;
   width: 100%;
   overflow: auto;
-}
-
-.background {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
   background-image: url(../img/background_1.png);
   background-size: 100% auto;
   background-position: top;
   background-attachment: fixed;
-  overflow: auto;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
 }
 
 .head {

@@ -1,4 +1,6 @@
 (function () {
+  document.body.style.height = document.body.clientHeight + 'px';
+  
   var error = {
     name: document.getElementById('errorName'),
     sex: document.getElementById('errorSex'),

@@ -1,4 +1,6 @@
 (function () {
+  document.body.style.height = document.body.clientHeight + 'px';
+
   var name = document.getElementById('name');
   var department_1 = document.getElementById('department1');
   var department_2 = document.getElementById('department2');

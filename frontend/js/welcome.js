@@ -14,9 +14,9 @@
             setTimeout(function() {
               expandBottom();
             }, 500)
-          }, 700)
-        }, 900)
-      }, 1000)
+          }, 650)
+        }, 700)
+      }, 850)
     }, 800);
   }
   window.addEventListener('load', initAnimation)
@@ -69,7 +69,7 @@
             dialogWrapper.classList.remove('go-second-top');
             stage = 2;
           }
-        }, (internal - 4) * 1000)
+        }, (internal - 4) * 800)
       })(i)
 
     }

@@ -1,6 +1,6 @@
 (function () {
   document.body.style.height = document.body.clientHeight + 'px';
-  
+
   var error = {
     name: document.getElementById('errorName'),
     sex: document.getElementById('errorSex'),
@@ -35,7 +35,7 @@
 
   var data = {
     name: function () {
-      return dom.name.value;
+      return dom.name.value.replace(/&|\s/g, '');
     },
     sex: function () {
       return getRadio(dom.sex);
@@ -47,10 +47,10 @@
       return dom.college.value;
     },
     dorm: function () {
-      return dom.dorm.value;
+      return dom.dorm.value.replace(/&|\s/g, '');
     },
     telephone: function () {
-      return dom.telephone.value;
+      return dom.telephone.value.replace(/&|\s/g, '');
     },
     department_1: function () {
       return dom.department_1.value;
@@ -62,7 +62,7 @@
       return getRadio(dom.adjust);
     },
     introduction: function () {
-      return dom.introduction.value;
+      return dom.introduction.value.replace(/&|\s|\r|\n/g, '');
     }
   }
 
@@ -107,7 +107,7 @@
       }
     },
     dorm: function () {
-      if (data.dorm() === '' || !(/^ *(C|c)([1-9]|1[0-9]) *(东|西)? *-? *[1-9][0-9]{2} *$/.test(data.dorm()))) {
+      if (data.dorm() === '' || !(/^ *((C|c)([1-9]|1[0-9])|\W+|\W+[1-9]+) *(东|西)? *-? *[1-9][0-9]{2} */.test(data.dorm()))) {
         error.dorm.classList.add('show');
         return false;
       } else {
@@ -129,7 +129,7 @@
         var result = confirm('您选了北校专属部门哦，要不要试试神秘的契合度测试？');
         confirmed = true;
         if (result) {
-          window.location.href = 'http://welcome.100steps.net/2018/spring';
+          goToNorth();
         }
       }
       if (data.department_1() === '') {
@@ -169,11 +169,25 @@
       var result = confirm('您选了北校专属部门哦，要不要试试神秘的契合度测试？');
       confirmed = true;
       if (result) {
-        window.location.href = 'http://welcome.100steps.net/2018/spring';
+        goToNorth();
       }
     }
     dom.department_2.classList.add('valid');
   })
+
+  var goToNorth = function () {
+    window.location.href = 'http://welcome.100steps.net/2018/spring' +
+      '?name=' + data.name() +
+      '&sex=' + data.sex() +
+      '&grade=' + data.grade() +
+      '&college=' + data.college() + 
+      '&dorm=' + data.dorm() + 
+      '&telephone=' + data.telephone() +
+      '&department_1=' + data.department_1() +
+      '&department_2=' + data.department_2() +
+      '&adjust=' + data.adjust() + 
+      '&introduction=' + data.introduction();
+  }
 
   var radioTracker = function (dom, listener) {
     for (var i = 0; i < dom.length; i++) {

@@ -66,6 +66,7 @@
     }
   }
 
+  var confirmed = false;
   var checker = {
     name: function () {
       if (data.name() === '') {
@@ -124,6 +125,13 @@
       }
     },
     department_1: function () {
+      if (confirmed === false && (data.department_1() === '技术部-北校专业' || data.department_1() === '产品运营部')) {
+        var result = confirm('您选了北校专属部门哦，要不要试试神秘的契合度测试？');
+        confirmed = true;
+        if (result) {
+          window.location.href = 'http://welcome.100steps.net/2018/spring';
+        }
+      }
       if (data.department_1() === '') {
         error.department_1.classList.add('show');
         dom.department_1.classList.remove('valid');
@@ -157,6 +165,13 @@
   dom.department_1.addEventListener('change', checker.department_1);
 
   dom.department_2.addEventListener('change', function () {
+    if (confirmed === false && (data.department_2() === '技术部-北校专业' || data.department_2() === '产品运营部')) {
+      var result = confirm('您选了北校专属部门哦，要不要试试神秘的契合度测试？');
+      confirmed = true;
+      if (result) {
+        window.location.href = 'http://welcome.100steps.net/2018/spring';
+      }
+    }
     dom.department_2.classList.add('valid');
   })
 
